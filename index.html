@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Němčina – zkoušení sloves</title>
+  <meta name="description" content="Procvičování německých nepravidelných sloves – infinitiv, préteritum, příčestí." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">DE</span>
+      <span class="brand-name">Zkoušení sloves</span>
+    </div>
+    <nav class="tabs" aria-label="Sekce">
+      <button class="tab is-active" data-view="quiz" type="button">Zkoušení</button>
+      <button class="tab" data-view="manage" type="button">Spravovat slovesa</button>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- ZKOUŠENÍ -->
+    <section id="view-quiz" class="view">
+      <!-- Průběh -->
+      <div class="progress">
+        <div class="progress-bar"><span id="progressFill"></span></div>
+        <p class="progress-text" id="progressText">—</p>
+      </div>
+
+      <!-- Karta s otázkou -->
+      <div class="card quiz-card" id="quizCard">
+        <p class="quiz-label">Český překlad</p>
+        <p class="quiz-prompt" id="prompt">…</p>
+
+        <form id="answerForm" autocomplete="off" novalidate>
+          <div class="field">
+            <label for="inInf">Infinitiv</label>
+            <input id="inInf" name="inf" type="text" inputmode="text"
+                   autocapitalize="off" autocorrect="off" spellcheck="false" />
+            <span class="field-status" data-for="inf"></span>
+          </div>
+          <div class="field">
+            <label for="inPret">Préteritum</label>
+            <input id="inPret" name="pret" type="text"
+                   autocapitalize="off" autocorrect="off" spellcheck="false" />
+            <span class="field-status" data-for="pret"></span>
+          </div>
+          <div class="field">
+            <label for="inPart">Příčestí (Partizip II)</label>
+            <input id="inPart" name="part" type="text"
+                   autocapitalize="off" autocorrect="off" spellcheck="false" />
+            <span class="field-status" data-for="part"></span>
+          </div>
+
+          <div class="actions">
+            <button class="button primary" id="checkBtn" type="submit">Zkontrolovat</button>
+            <button class="button ghost" id="nextBtn" type="button" hidden>Další &rarr;</button>
+            <button class="button ghost" id="skipBtn" type="button">Přeskočit</button>
+          </div>
+        </form>
+
+        <div class="feedback" id="feedback" hidden></div>
+      </div>
+
+      <p class="hint">Tip: <kbd>Enter</kbd> zkontroluje a posune dál. Přehlásky můžete psát i jako
+        <em>ae / oe / ue</em>, na velikosti písmen nezáleží.</p>
+
+      <!-- Hotovo -->
+      <div class="card done-card" id="doneCard" hidden>
+        <h2>🎉 Hotovo!</h2>
+        <p id="doneText">Všechna slovesa máte naučená.</p>
+        <button class="button primary" id="restartBtn" type="button">Projít znovu</button>
+      </div>
+    </section>
+
+    <!-- SPRÁVA SLOVES -->
+    <section id="view-manage" class="view" hidden>
+      <div class="card">
+        <h2>Vložit slovesa</h2>
+        <p class="muted">
+          Jeden řádek = jedno sloveso, ve sloupcích v pořadí
+          <strong>infinitiv · préteritum · příčestí · překlad</strong>.
+          Sloupce oddělte tabulátorem (kopírování z Excelu), středníkem nebo čárkou.
+          Více variant v poli oddělte lomítkem (<code>jít / chodit</code>).
+        </p>
+        <textarea id="importBox" rows="10" spellcheck="false" placeholder="gehen	ging	gegangen	jít / chodit
+kommen	kam	gekommen	přijít
+sehen	sah	gesehen	vidět"></textarea>
+
+        <div class="actions">
+          <button class="button primary" id="importReplaceBtn" type="button">Nahradit seznam</button>
+          <button class="button" id="importAddBtn" type="button">Přidat k seznamu</button>
+          <button class="button ghost" id="loadCurrentBtn" type="button">Načíst aktuální do pole</button>
+        </div>
+        <p class="import-msg" id="importMsg" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="card">
+        <h2>Aktuální seznam <span class="count" id="listCount"></span></h2>
+        <p class="muted">
+          Tlačítkem níže získáte obsah pro soubor <code>data/verbs.js</code>, který můžete
+          commitnout do repa. Tlačítkem <em>Obnovit</em> se vrátíte k seznamu z toho souboru.
+        </p>
+        <div class="actions">
+          <button class="button" id="exportBtn" type="button">Exportovat (pro data/verbs.js)</button>
+          <button class="button ghost danger" id="resetDataBtn" type="button">Obnovit výchozí seznam</button>
+          <button class="button ghost danger" id="resetProgressBtn" type="button">Vynulovat pokrok</button>
+        </div>
+        <pre id="exportOut" class="export-out" hidden></pre>
+        <ul class="verb-list" id="verbList"></ul>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="data/verbs.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
