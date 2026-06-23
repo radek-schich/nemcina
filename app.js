@@ -46,6 +46,7 @@
     checkBtn: $("#checkBtn"),
     nextBtn: $("#nextBtn"),
     skipBtn: $("#skipBtn"),
+    helpBtn: $("#helpBtn"),
     feedback: $("#feedback"),
 
     importBox: $("#importBox"),
@@ -219,6 +220,7 @@
     els.nextBtn.hidden = true;
     els.checkBtn.hidden = false;
     els.skipBtn.hidden = false;
+    els.helpBtn.hidden = false;
 
     current = pickNext();
 
@@ -286,6 +288,7 @@
     els.checkBtn.hidden = true;
     els.nextBtn.hidden = false;
     els.skipBtn.hidden = true;
+    els.helpBtn.hidden = true;
     els.nextBtn.focus();
     renderProgress();
     renderLevelChips();
@@ -429,6 +432,11 @@
   els.form.addEventListener("submit", (e) => { e.preventDefault(); if (answered) showQuestion(); else checkAnswer(); });
   els.nextBtn.addEventListener("click", showQuestion);
   els.skipBtn.addEventListener("click", showQuestion);
+  els.helpBtn.addEventListener("click", () => {
+    if (!current || answered) return;
+    els.inInf.value = String(current.inf).split("/")[0].trim();  // jen infinitiv
+    (els.inPret.value ? els.inPart : els.inPret).focus();
+  });
   els.restartBtn.addEventListener("click", () => {
     // vynuluj pokrok jen u aktivních úrovní
     for (const v of activeVerbs()) delete progress[verbKey(v)];
