@@ -275,14 +275,11 @@
       els.feedback.innerHTML = isMastered(current)
         ? `Výborně – sloveso je naučené! ✅`
         : `Správně! Série ${s}/${MASTERY} (ještě ${MASTERY - s} pro naučení).`;
+      els.feedback.hidden = false;
     } else {
       progress[key] = 0;
-      els.feedback.className = "feedback bad";
-      els.feedback.innerHTML =
-        `Není to úplně ono. Správně je:` +
-        `<span class="sol"><b>${current.inf}</b> – <b>${current.pret}</b> – <b>${current.part}</b></span>`;
+      els.feedback.hidden = true;
     }
-    els.feedback.hidden = false;
     saveProgress();
 
     answered = true;
