@@ -56,4 +56,4 @@ sehen	sah	gesehen	vidět
 | `index.html` | UI aplikace |
 | `styles.css` | vzhled |
 | `app.js` | logika zkoušení, import/export, ukládání |
-| `data/verbs.js` | výchozí (verzovaný) seznam sloves |
+| `data/verbs.js` | výchozí (verzovaný) seznam sloves — 173 silných/nepravidelných sloves A1–C2 |
