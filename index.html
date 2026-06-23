@@ -26,6 +26,18 @@
 
     <!-- ZKOUŠENÍ -->
     <section id="view-quiz" class="view">
+      <!-- Výběr úrovní -->
+      <div class="levels card" id="levelsCard">
+        <div class="levels-head">
+          <span class="levels-title">Úrovně k procvičování</span>
+          <div class="levels-quick">
+            <button type="button" class="chip-link" id="levelsAll">Vše</button>
+            <button type="button" class="chip-link" id="levelsNone">Žádné</button>
+          </div>
+        </div>
+        <div class="level-chips" id="levelChips"></div>
+      </div>
+
       <!-- Průběh -->
       <div class="progress">
         <div class="progress-bar"><span id="progressFill"></span></div>
@@ -34,7 +46,10 @@
 
       <!-- Karta s otázkou -->
       <div class="card quiz-card" id="quizCard">
-        <p class="quiz-label">Český překlad</p>
+        <div class="quiz-card-head">
+          <p class="quiz-label">Český překlad</p>
+          <span class="level-badge" id="promptLevel" hidden></span>
+        </div>
         <p class="quiz-prompt" id="prompt">…</p>
 
         <form id="answerForm" autocomplete="off" novalidate>

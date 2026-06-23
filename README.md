@@ -4,7 +4,10 @@ Jednoduchá webová aplikace na drilování německých nepravidelných sloves.
 Ukáže český překlad a vy doplníte všechny tři tvary: **infinitiv · préteritum · příčestí (Partizip II)**.
 Sloveso „vypadne“ ze zkoušení, jakmile ho zadáte **3× správně za sebou** (chyba počítadlo vynuluje).
 
-Bez závislostí – čistá HTML/CSS/JS. Pokrok i vlastní seznam sloves se ukládají
+Slovesa jsou rozdělená podle **úrovní A1–C2** a v záložce *Zkoušení* si zaškrtnete,
+které úrovně chcete procvičovat (každá má vlastní barvu).
+
+Bez závislostí – čistá HTML/CSS/JS. Pokrok, vlastní seznam i výběr úrovní se ukládají
 do prohlížeče (`localStorage`).
 
 ## Spuštění
@@ -30,6 +33,7 @@ infinitiv	préteritum	příčestí	překlad
 
 Sloupce lze oddělit **tabulátorem** (kopírování z Excelu), **středníkem** nebo **čárkou**.
 Více přijatelných variant v jednom poli oddělte lomítkem, např. `jít / chodit`.
+Volitelně můžete přidat **5. sloupec s úrovní** (`A1`–`C2`), podle které pak slovesa filtrujete.
 
 Příklad:
 
